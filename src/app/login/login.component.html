@@ -1,0 +1,14 @@
+<div ng-show="!authenticated">
+  <h1>Please login</h1>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Username:">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input type="password" matInput placeholder="Password:">
+      </mat-form-field>
+  
+      <button mat-button (click)="login()">Submit</button>
+      <a [routerLink]="['/register']" mat-button>Register</a>
+  </form>
