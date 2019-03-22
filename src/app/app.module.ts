@@ -15,6 +15,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from 'src/material-module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
+import { PmComponent } from './pm/pm.component';
+import { AdminComponent } from './admin/admin.component';
+
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,11 @@ import { RegisterComponent } from './register/register.component';
     CarListComponent,
     CarEditComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    UserComponent,
+    PmComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   entryComponents: [CarEditComponent],
   
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent,CarEditComponent]
 })
 export class AppModule {
