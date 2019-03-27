@@ -1,6 +1,29 @@
-<mat-toolbar color="primary">
-  <span>Welcome to {{title}}!</span>
+<div>
+<mat-toolbar color="primary" class="toolbar">
+
+
+ <button mat-fab class="button" routerLink="home">Home</button>
+ <div *ngIf="authority === 'user'">
+    <button mat-fab  class="button" routerLink="user" >User Board</button>
+ </div>
+ <div *ngIf="authority === 'admin'">
+    <button mat-fab class="button" routerLink="admin">Admin Board</button>
+ </div>
+ <div *ngIf="authority === 'pm'">
+    <button mat-fab class="button" routerLink="pm">PM Board</button>
+ </div>
+ <div *ngIf="!token">
+    <button mat-fab  class="button" routerLink="auth/login">Login</button>
+ </div>
+ 
+ 
+ 
 </mat-toolbar>
 
 
+</div>
+
+<div class="container">
+    <mat-spinner *ngIf="resourcesLoaded"></mat-spinner>
   <router-outlet></router-outlet>
+</div>

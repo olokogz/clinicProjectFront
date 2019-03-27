@@ -17,7 +17,10 @@ export class HomeComponent implements OnInit {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
+      
     };
+
+
   }
 
   logout(){

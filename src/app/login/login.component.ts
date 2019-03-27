@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
  
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
+import { MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
  
 @Component({
   selector: 'app-login',
@@ -17,10 +18,12 @@ export class LoginComponent implements OnInit {
   errorMessage='';
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
+  private message: string;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public dialog: MatDialog) { }
 
   ngOnInit() {
+
     if(this.tokenStorage.getToken())
     {
       this.isLoggedIn = true;
@@ -38,7 +41,7 @@ export class LoginComponent implements OnInit {
     );
 
     this.authService.attemptAuth(this.loginInfo).subscribe(data=>{
-      this.tokenStorage.saveToken(data.accessToken);
+      this.tokenStorage.saveToken(data.token);
       this.tokenStorage.saveUsername(data.username);
       this.tokenStorage.saveAuthoriries(data.authorities);
 
@@ -56,6 +59,30 @@ export class LoginComponent implements OnInit {
 
   reloadPage(){
     window.location.reload();
+  }
+
+  openDialog(message: string): void{
+    const dialogRef = setTimeout(() => this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {message: this.message}
+    }));
+
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: LoginComponent) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

@@ -1,9 +1,10 @@
-<div *ngIf="info.token; else loggedOut">
+<div *ngIf="info.token;">
   <h5 class = "text-primary"> Your Information</h5>
   <p>
     <strong>Username:</strong>{{info.username}}<br/>
     <strong>Roles:</strong>{{info.authorities}}<br/>
     <strong>Token:</strong>{{info.token}}.
+    
   </p>
   <button mat-button class="btn-secondary" (click) = "logout()">Logout</button>
   </div>

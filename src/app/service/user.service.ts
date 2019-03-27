@@ -19,11 +19,11 @@ export class UserService {
     return this.http.get(this.userUrl,{responseType: 'text'});
   }
 
-  getPMBorad(): Observable<string>{
+  getPMBoard(): Observable<string>{
     return this.http.get(this.pmUrl, {responseType: 'text'});
   }
 
-  getAdminBorad(): Observable<string>{
+  getAdminBoard(): Observable<string>{
     return this.http.get(this.adminUrl, {responseType: 'text'});
   }
 }

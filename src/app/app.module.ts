@@ -19,8 +19,9 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
+import {DialogOverviewExampleDialog} from './login/login.component';
 
-import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { HttpInterceptorProviders } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     HomeComponent,
     UserComponent,
     PmComponent,
-    AdminComponent
+    AdminComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -54,11 +56,12 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    
   ],
-  entryComponents: [CarEditComponent],
+  entryComponents: [DialogOverviewExampleDialog],
   
-  providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent,CarEditComponent]
+  providers: [HttpInterceptorProviders],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
