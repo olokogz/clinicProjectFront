@@ -3,19 +3,20 @@
 
 
  <button mat-fab class="button" routerLink="home">Home</button>
- <div *ngIf="authority === 'user'">
-    <button mat-fab  class="button" routerLink="user" >User Board</button>
+
+ <div *ngIf="this.userButton">
+    <button mat-fab  class="button" routerLink="user" ><div class="textbutton">User Board</div></button>
+   </div>
+ <div *ngIf="this.adminButton">
+    <button mat-fab inline="false" class="button" routerLink="admin"><div class="textbutton">Admin Board</div></button>
  </div>
- <div *ngIf="authority === 'admin'">
-    <button mat-fab class="button" routerLink="admin">Admin Board</button>
+ <div *ngIf="this.pmButton">
+    <button mat-fab inline="false" class="button" routerLink="pm"><div class="textbutton">Pm Board</div></button>
  </div>
- <div *ngIf="authority === 'pm'">
-    <button mat-fab class="button" routerLink="pm">PM Board</button>
- </div>
- <div *ngIf="!token">
+ <div *ngIf="!this.loginButton">
     <button mat-fab  class="button" routerLink="auth/login">Login</button>
  </div>
- 
+
  
  
 </mat-toolbar>
