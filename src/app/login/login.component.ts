@@ -4,14 +4,30 @@ import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
 import { MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
- 
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  usernameFormControl = new FormControl('',[
+    Validators.required
+  ]);
+  passwordFormControl = new FormControl('',[
+    Validators.required,
+    Validators.minLength(6)
+  ]);
+  matcher = new MyErrorStateMatcher();
+  
   form:any = {};
   isLoggedIn = false;
   isLoginFailed = false;

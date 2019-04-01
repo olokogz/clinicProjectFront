@@ -1,45 +1,46 @@
+<div class="main-container">
 <div *ngIf="isSignedUp; else signupForm">
     Your registration is successful. Please login!
   </div>
    
   <ng-template #signupForm>
-    <div class="row col-sm-6" style="max-width:350px;">
+    <div class="mat-app-background basic-container">
+       <!-- <div class="logintext">Sign Up</div>-->
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-            required />
-          <div *ngIf="f.submitted && username.invalid">
-            <div *ngIf="username.errors.required">Username is required</div>
-          </div>
-        </div>
 
 
 
+        <ol>    
+            <mat-form-field class="example-full-width" label for="username">
+              <input matInput type="text" placeholder="username" name="username" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.username">
+              <mat-error *ngIf="usernameFormControl.hasError('required')">Username is <strong>required!</strong></mat-error>
+            </mat-form-field>
+            </ol>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-            required minlength="6" />
-          <div *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="enabled">Enabled</label>
-          <input type="text" class="form-control" name="enabled" [(ngModel)]="form.enabled" #enabled="ngModel" required />
-          <div *ngIf="f.submitted && enabled.invalid">
-            <div *ngIf="enabled.errors.required">Email is required</div>
-          </div>
-        </div>
+            <ol>    
+                <mat-form-field class="example-full-width" label for="password">
+                  <input matInput type="password" placeholder="password" name="password" [formControl] = "passwordFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.password">
+                  <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required!</strong></mat-error>
+                  <mat-error *ngIf="passwordFormControl.hasError('minlength')">Password must have <strong>minimum 6 characters!</strong></mat-error>
+                </mat-form-field>
+                </ol>
+        <ol>    
+            <mat-form-field class="example-full-width" label for="enabled">
+              <input matInput type="enabled" placeholder="enabled" name="enabled" [formControl] = "enabledFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.enabled">
+              <mat-error *ngIf="usernameFormControl.hasError('required')">Enabled is <strong>required!</strong></mat-error>
+            </mat-form-field>
+            </ol>
+            <div class="form-group">
+              <button mat-raised-button color="primary" class="btn btn-primary">Register</button>
+              <!--<div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                Signup failed!<br/>{{errorMessage}}
+                {{passwordFormControl.hasError}}
+              </div>-->
+            </div>
 
-        <div class="form-group">
-          <button class="btn btn-primary">Register</button>
-          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-            Signup failed!<br/>{{errorMessage}}
-          </div>
-        </div>
+        
       </form>
+      
     </div>
   </ng-template>
+</div>

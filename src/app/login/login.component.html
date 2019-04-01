@@ -4,39 +4,30 @@
 </div>
 <ng-template #loggedOut>
     <div class="mat-app-background basic-container">
-      <div class="logintext">Please login</div>
       <form class="example-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      
 
-
-        
         <ol>    
-        <mat-form-field class="example-full-width" label for="username">
-          <input matInput type="text" placeholder="username" name="username" [(ngModel)]="form.username" #username="ngModel" required>
-        </mat-form-field>
-        <div *ngIf="f.submitted" >
-            <div class="warningtext" *ngIf="username.errors.required">Username is required</div>
-        </div>
+          <mat-form-field class="example-full-width" label for="username">
+            <input matInput type="text" placeholder="username" name="username" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher" [(ngModel)]="form.username">
+            <mat-error *ngIf="usernameFormControl.hasError('required')">Username is <strong>required!</strong></mat-error>
+          </mat-form-field>
         </ol>
 
 
         <ol>    
           <mat-form-field class="example-full-width" label for="password">
-            <input matInput type="password" placeholder="password" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6">
+            <input matInput type="password" placeholder="password" name="password" [formControl] = "passwordFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.password">
+            <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required!</strong></mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('minlength')">Password must have <strong>minimum 6 characters!</strong></mat-error>
           </mat-form-field>
-          <div *ngIf="f.submitted && password.invalid">
-            <div class="warningtext" *ngIf="password.errors.required">Password is required</div>
-            <div class="warningtext" *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-          </div>
           </ol>
 
         
         <div class="form-group">
           <button mat-raised-button color="primary" class="btn btn-primary">Login</button>
           <div *ngIf="f.submitted && isLoginFailed" class="openDialog(errorMessage)">
-            <!--Login failed: {{errorMessage}}-->
           </div>
-          <button mat-raised-button color="primary" class="btn btn-primary" (click)="openDialog()">open dialog</button>
+         <!-- <button mat-raised-button color="primary" class="btn btn-primary" (click)="openDialog()">open dialog</button>-->
         </div>
       </form>
       <hr />

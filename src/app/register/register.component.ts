@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { SignUpInfo } from '../auth/signup-info';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-register',
@@ -8,6 +17,18 @@ import { SignUpInfo } from '../auth/signup-info';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+usernameFormControl = new FormControl('',[
+  Validators.required
+]);
+passwordFormControl = new FormControl('',[
+  Validators.required,
+  Validators.minLength(6)
+]);
+enabledFormControl = new FormControl('',[
+  Validators.required,
+]);
+matcher = new MyErrorStateMatcher();
 
   form: any = {};
   signupInfo: SignUpInfo;
