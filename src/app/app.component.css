@@ -29,3 +29,19 @@
     display:unset !important;
 
   }
+  .userinfolayout{
+      position: absolute;
+      right:0;
+    float: right;
+    background-color: gray;
+    opacity: 0.8;
+    margin-left: -15px;
+    width: 100px;
+    height: 30px;
+  }
+  .userinfo{
+      font-size: 10px;
+      color: white;
+      position: absolute;
+      text-align: start;
+  }

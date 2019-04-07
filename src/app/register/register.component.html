@@ -24,6 +24,53 @@
                   <mat-error *ngIf="passwordFormControl.hasError('minlength')">Password must have <strong>minimum 6 characters!</strong></mat-error>
                 </mat-form-field>
                 </ol>
+      
+            <ol>    
+                <mat-form-field class="example-full-width" label for="name">
+                  <input matInput type="name" placeholder="name" name="name" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.name">
+                  <mat-error *ngIf="usernameFormControl.hasError('required')">Name is <strong>required!</strong></mat-error>
+                </mat-form-field>
+                </ol>
+    
+            <ol>    
+                <mat-form-field class="example-full-width" label for="surename">
+                  <input matInput type="surename" placeholder="surename" name="surename" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.surename">
+                  <mat-error *ngIf="usernameFormControl.hasError('required')">Surename is <strong>required!</strong></mat-error>
+                </mat-form-field>
+                </ol>
+            <ol>    
+                    <mat-form-field class="example-full-width" label for="phoneNumber">
+                      <input matInput type="phoneNumber" placeholder="phoneNumber" name="phoneNumber" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.phoneNumber">
+                      <mat-error *ngIf="usernameFormControl.hasError('required')">Phone number is <strong>required!</strong></mat-error>
+                    </mat-form-field>
+            </ol>
+            <ol>    
+                <mat-form-field class="example-full-width" label for="emailAddress">
+                  <input matInput type="emailAddress" placeholder="emailAddress" name="emailAddress" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.emailAddress">
+                  <mat-error *ngIf="usernameFormControl.hasError('required')">Email address is <strong>required!</strong></mat-error>
+                </mat-form-field>
+        </ol>
+
+        <ol>    
+            <mat-form-field class="example-full-width" label for="birthdate">
+              <input matInput [matDatepicker]="picker" type="birthdate" placeholder="birthdate" name="birthdate" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.birthdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="usernameFormControl.hasError('required')">Your birth date is <strong>required!</strong></mat-error>
+            </mat-form-field>
+    </ol>
+
+    <ol>    
+        <mat-form-field class="example-full-width" label for="gender">
+          <mat-select [(ngModel)]="form.gender" placeholder="select gender" name="gender" [formControl] = "usernameFormControl" [errorStateMatcher]="matcher" [(ngModel)]="form.gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+              {{gender.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="usernameFormControl.hasError('required')">Gender is <strong>required!</strong></mat-error>
+        </mat-form-field>
+</ol>
+
         <ol>    
             <mat-form-field class="example-full-width" label for="enabled">
               <input matInput type="enabled" placeholder="enabled" name="enabled" [formControl] = "enabledFormControl" [errorStateMatcher]="matcher"[(ngModel)]="form.enabled">

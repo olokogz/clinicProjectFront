@@ -11,12 +11,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+export interface Gender{
+  value:string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+genders:Gender[] = [
+  {value:'M',viewValue:'Man'},
+  {value:'K',viewValue:'Woman'}
+]
 
 usernameFormControl = new FormControl('',[
   Validators.required
@@ -47,6 +57,12 @@ matcher = new MyErrorStateMatcher();
     this.signupInfo = new SignUpInfo(
       this.form.username,
       this.form.password,
+      this.form.name,
+      this.form.surename,
+      this.form.phoneNumber,
+      this.form.emailAddress,
+      this.form.birthdate,
+      this.form.gender,
       this.form.enabled);
   
       this.authService.signUp(this.signupInfo).subscribe(

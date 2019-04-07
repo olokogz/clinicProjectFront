@@ -1,6 +1,11 @@
 <div>
 <mat-toolbar color="primary" class="toolbar">
 
+   <mat-card *ngIf="this.loginButton" class="userinfolayout">
+      <div class="userinfo">Logged as:{{info.username}}
+      </div>
+   </mat-card>
+
 
  <button mat-fab class="button" routerLink="home">Home</button>
 

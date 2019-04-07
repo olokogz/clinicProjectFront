@@ -19,8 +19,17 @@ private adminButton: boolean = false;
 private userButton: boolean = false;
 private loginButton: boolean = false;
 private count = 0;
+info: any;
   ngOnInit() {
     
+    this.info = {
+      token: this.tokenStorage.getToken(),
+      username: this.tokenStorage.getUsername(),
+      authorities: this.tokenStorage.getAuthorities()
+      
+    };
+
+
     if(this.tokenStorage.getToken()){
       this.loginButton = true;
       this.roles = this.tokenStorage.getAuthorities();

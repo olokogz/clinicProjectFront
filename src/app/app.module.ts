@@ -20,6 +20,7 @@ import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import {DialogOverviewExampleDialog} from './login/login.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { HttpInterceptorProviders } from './auth/auth-interceptor';
 
@@ -56,6 +57,7 @@ import { HttpInterceptorProviders } from './auth/auth-interceptor';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatDatepickerModule
     
   ],
   entryComponents: [DialogOverviewExampleDialog],
