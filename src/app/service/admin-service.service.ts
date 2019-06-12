@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/index";
-
-import {ApiResponse} from "../model/api.response"
+import {tap} from "rxjs/operators";
+import { User } from '../model/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +14,9 @@ export class AdminServiceService {
 
   baseUrl: string = "http://localhost:8080/admin";
 
-  getUsers():Observable<ApiResponse>
+  getUsers():Observable<User[]>
   {
-    console.log(this.http.get<ApiResponse>(this.baseUrl+"/findAll"))
-    return this.http.get<ApiResponse>(this.baseUrl+"/findAll");
+    return this.http.get<User[]>(this.baseUrl+"/findAll").pipe(tap(data => console.log('fetched users')));
   }
-
 
 }

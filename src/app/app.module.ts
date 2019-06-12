@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarListComponent } from './car-list/car-list.component';
 
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule,MatFormFieldModule,MatSelectModule, MatNativeDateModule  } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule,MatFormFieldModule,MatSelectModule, MatNativeDateModule, MatTableModule  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CarEditComponent } from './car-edit/car-edit.component';
@@ -57,7 +57,8 @@ import { HttpInterceptorProviders } from './auth/auth-interceptor';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatTableModule
     
   ],
   entryComponents: [DialogOverviewExampleDialog],
