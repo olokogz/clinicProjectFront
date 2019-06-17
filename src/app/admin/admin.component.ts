@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
   board: string;
   errorMessage: string;
   users: User[];
-  displayedColumns = ['id','name','username','surname'];
+  displayedColumns = ['id','name','username','surname', 'accountCreationDate', 'birthdate', 'emailAddress','enabled','gender','phoneNumber'];
   constructor(private router: Router, private userService: UserService, private adminService: AdminServiceService, private tokenStorageService: TokenStorageService) { }
   dataSource = new UserDataSource(this.adminService);
   ngOnInit() {
@@ -36,6 +36,7 @@ export class AdminComponent implements OnInit {
 
     
     this.adminService.getUsers().subscribe(data => {this.users = data});
+    this.adminService.getUsers().subscribe(data => {console.log(data)});
     
   }
 }

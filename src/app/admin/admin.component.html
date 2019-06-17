@@ -1,23 +1,50 @@
 
 <div class="example-container mat-elevation-z8">
   
+  
   <mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+
+    
+    <ng-container matColumnDef="id" sticky>
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> E-Mail </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
-    </ng-container>
     <ng-container matColumnDef="surname">
-      <mat-header-cell *matHeaderCellDef> Company </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.surname}} </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="birthdate">
+      <mat-header-cell *matHeaderCellDef> Birthdate </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.birthdate}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="emailAddress">
+        <mat-header-cell *matHeaderCellDef> Email Address </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.emailAddress}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.gender}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+          <mat-cell *matCellDef="let user"> {{user.phoneNumber}} </mat-cell>
+        </ng-container>
+    <ng-container matColumnDef="accountCreationDate">
+        <mat-header-cell *matHeaderCellDef> Account Creation Date </mat-header-cell>
+          <mat-cell *matCellDef="let user"> {{user.accountCreationDate}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="enabled">
+          <mat-header-cell *matHeaderCellDef> Enabled </mat-header-cell>
+          <mat-cell *matCellDef="let user"> {{user.enabled}} </mat-cell>
+          </ng-container> 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
