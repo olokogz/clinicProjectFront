@@ -1,4 +1,5 @@
 
+
 .button{
     margin: 0.3cm;
     transform: scale(1.2);
@@ -44,4 +45,13 @@
       color: white;
       position: absolute;
       text-align: start;
+  }
+
+
+  .btn-secondary{
+    margin-left: 4% !important;
+  }
+
+  .buttons_nav_container{
+    margin-left: 5% !important;
   }
