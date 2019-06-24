@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
   users: User[];
   displayedColumns = ['id','name','username','surname', 'accountCreationDate', 'birthdate', 'emailAddress','enabled','gender','phoneNumber'];
   constructor(private router: Router, private userService: UserService, private adminService: AdminServiceService, private tokenStorageService: TokenStorageService) { }
-  dataSource = new UserDataSource(this.adminService);
+
   ngOnInit() {
     
     this.userService.getAdminBoard().subscribe(
@@ -39,15 +39,8 @@ export class AdminComponent implements OnInit {
     this.adminService.getUsers().subscribe(data => {console.log(data)});
     
   }
-}
-  export class UserDataSource extends DataSource<any>{
-constructor(private adminService: AdminServiceService){
-      super();
-    }
-    connect(): Observable<User[]>{
-      return this.adminService.getUsers();
-    }
-    disconnect(){}
-  }
 
-  
+  deleteUser(user: User): void{
+    this.adminService.deleteUser(user).subscribe(data => {this.users = this.users.filter(u => u !== user)})
+  }
+}
