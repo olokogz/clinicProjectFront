@@ -1,5 +1,5 @@
 
-<div class="example-container mat-elevation-z8">
+<!-- <div class="example-container mat-elevation-z8">
   
   
   <mat-table [dataSource]="dataSource">
@@ -54,4 +54,63 @@
   [pageSizeOptions]="[5, 10, 20]"
   [showFirstLastButtons]="true">
 </mat-paginator>
-</div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      </head>
+<body>       <div class="table-container" >
+        <table style= "text-align: center" class="table table-dark" id="myData">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Surename</th>
+              <th>Username</th>
+              <th>Birthdate</th>
+              <th>Email Address</th>
+              <th>Gender</th>
+              <th>Phone Number</th>
+              <th>Account Creation Date</th>
+              <th>Enabled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td class = "hidden"></td>
+              <td contenteditable="true" nowrap>{{user.id}}</td>
+              <td contenteditable="true" nowrap>{{user.name}}</td>
+              <td contenteditable="true" nowrap>{{user.surename}}</td>
+              <td contenteditable="true" nowrap>{{user.username}}</td>
+              <td contenteditable="true" nowrap>{{user.birthdate}}</td>
+              <td contenteditable="true" nowrap>{{user.emailAddress}}</td>
+              <td contenteditable="true" nowrap>{{user.gender}}</td>
+              <td contenteditable="true" nowrap>{{user.phoneNumber}}</td>
+              <td contenteditable="true" nowrap>{{user.accountCreationDate}}</td>
+              <td contenteditable="true" nowrap>{{user.enabled}}</td>
+              <td>
+                  <span class="table-remove"><button type="button"
+                      class="btn btn-danger btn-rounded btn-sm my-0" (click)="deleteUser(user)">Remove</button></span>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+        <script>
+        $(document).ready(function() {
+    $('#myData').dataTable();
+} );
+        </script> 
+</body>
+</html>
