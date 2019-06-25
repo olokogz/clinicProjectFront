@@ -41,6 +41,11 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(user: User): void{
-    this.adminService.deleteUser(user).subscribe(data => {this.users = this.users.filter(u => u !== user)})
+    this.users.splice(this.users.indexOf(user),1);
+     this.adminService.deleteUser(user).subscribe(data => {this.users = this.users.filter(u => u !== user)}) 
+  }
+
+  fetchData(){
+    this.adminService.getUsers().subscribe(data=>{this.users = data});
   }
 }
