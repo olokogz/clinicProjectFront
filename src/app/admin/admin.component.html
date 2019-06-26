@@ -93,7 +93,15 @@
               <td contenteditable="true" nowrap>{{user.enabled}}</td>
               <td>
                   <span class="table-remove"><button type="button"
-                      class="btn btn-danger btn-rounded btn-sm my-0" (click)="deleteUser(user)">Remove</button></span>
+                      class="btn btn-danger btn-rounded btn-sm my-0" (click)="openModal(template)">Remove</button></span>
+
+                      <ng-template #template>
+                        <div class="modal-body fade text-center">
+                          <p>Are you sure you want do delete user {{user.username}}</p>
+                          <button type="button" class="btn btn-default" (click)="deleteUser(user)" >Yes</button>
+                          <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                        </div>
+                      </ng-template>
                 </td>
             </tr>
           </tbody>

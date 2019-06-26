@@ -23,6 +23,8 @@ import {DialogOverviewExampleDialog} from './login/login.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { HttpInterceptorProviders } from './auth/auth-interceptor';
+import { CommonModule } from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -51,14 +53,15 @@ import { HttpInterceptorProviders } from './auth/auth-interceptor';
     MatFormFieldModule,
     MatSelectModule,
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatTableModule
+    MatTableModule,
+    ModalModule.forRoot(),
+    CommonModule
     
   ],
   entryComponents: [DialogOverviewExampleDialog],

@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { User } from "../model/user"
 import { AdminServiceService } from "../service/admin-service.service"
 import { Router } from "@angular/router";
 import { TokenStorageService } from '../auth/token-storage.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
-import { DataSource } from '@angular/cdk/table';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -17,7 +16,9 @@ export class AdminComponent implements OnInit {
   errorMessage: string;
   users: User[];
   displayedColumns = ['id','name','username','surname', 'accountCreationDate', 'birthdate', 'emailAddress','enabled','gender','phoneNumber'];
-  constructor(private router: Router, private userService: UserService, private adminService: AdminServiceService, private tokenStorageService: TokenStorageService) { }
+  modalRef: BsModalRef;
+  message: string;
+  constructor(private router: Router, private userService: UserService, private adminService: AdminServiceService, private tokenStorageService: TokenStorageService, private modalService: BsModalService) { }
 
   ngOnInit() {
     
@@ -41,6 +42,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(user: User): void{
+    this.modalRef.hide();
     this.users.splice(this.users.indexOf(user),1);
      this.adminService.deleteUser(user).subscribe(data => {this.users = this.users.filter(u => u !== user)}) 
   }
@@ -48,4 +50,18 @@ export class AdminComponent implements OnInit {
   fetchData(){
     this.adminService.getUsers().subscribe(data=>{this.users = data});
   }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
+  }
+
 }

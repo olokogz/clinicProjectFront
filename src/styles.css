@@ -15,3 +15,8 @@ background-position: center;
 z-index:-1;
 
 }
+
+
+.modal{
+    opacity: 1 !important
+  }
