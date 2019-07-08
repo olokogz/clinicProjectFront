@@ -1,68 +1,6 @@
-.example-container {
-    height: 50%x;
-    width: 80%;
-    overflow: auto;
-
-    position:absolute;
-    top:20%;
-    left:10%;
-  }
-  
-  table {
-    width: 50%;
-    position:absolute;
-    top:50%;
-    left:50%;
-  }
-  
-  td.mat-column-star {
-    width: 20px;
-    padding-right: 8px;
-  }
-  
-  th.mat-column-position, td.mat-column-position {
-    padding-left: 8px;
-  }
-  
-  .mat-table-sticky:first-child {
-    border-right: 1px solid #e0e0e0;
-  }
-  
-  .mat-table-sticky:last-child {
-    border-left: 1px solid #e0e0e0;
-  }
-
-  .mat-column-id{
-      flex: 0 0 15px;
-  }
-
-  .mat-column-gender{
-      flex: 0 0 4%;
-  }
-
-  .mat-column-enabled{
-    flex: 0 0 4%;
-}
-.mat-column-emailAddress{
-    flex: 0 0 20%;
-}
-.mat-column-name{
-    flex: 0 0 10%;
-}
-.mat-column-username{
-    flex: 0 0 10%;
-}
-.mat-column-surname{
-    flex: 0 0 10%;
-}
-.table-container
-{
-  position:relative;
-
-}
 .table{
   margin: auto;
-   width: 50% !important;
+   width: 60% !important;
    position: initial;
 }
 
@@ -70,3 +8,4 @@
 {
   opacity: 1 !important;
 }
+

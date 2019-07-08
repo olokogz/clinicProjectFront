@@ -60,10 +60,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script>
+        
+        $(document).ready(function () {
+          $('#myData').DataTable({
+          "scrollY": "200px",
+          "scrollCollapse": true,
+          });
+          $('.dataTables_length').addClass('bs-select');
+          });
+          
+          </script>
       </head>
-<body>        
-         <table style= "text-align: center" class="table table-dark" id="myData">
+<body>
+       
+         <table class="table table-dark table-responsive" style="text-align: center">
           <thead>
             <tr>
               <th>Id</th>
@@ -79,18 +90,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users">
+            <tr *ngFor="let user of usersToPagination">
               <td class = "hidden"></td>
-              <td contenteditable="true" nowrap>{{user.id}}</td>
-              <td contenteditable="true" nowrap>{{user.name}}</td>
-              <td contenteditable="true" nowrap>{{user.surename}}</td>
-              <td contenteditable="true" nowrap>{{user.username}}</td>
-              <td contenteditable="true" nowrap>{{user.birthdate}}</td>
-              <td contenteditable="true" nowrap>{{user.emailAddress}}</td>
-              <td contenteditable="true" nowrap>{{user.gender}}</td>
-              <td contenteditable="true" nowrap>{{user.phoneNumber}}</td>
-              <td contenteditable="true" nowrap>{{user.accountCreationDate}}</td>
-              <td contenteditable="true" nowrap>{{user.enabled}}</td>
+              <td nowrap>{{user.id}}</td>
+              <td nowrap>{{user.name}}</td>
+              <td nowrap>{{user.surename}}</td>
+              <td nowrap>{{user.username}}</td>
+              <td nowrap>{{user.birthdate}}</td>
+              <td nowrap>{{user.emailAddress}}</td>
+              <td nowrap>{{user.gender}}</td>
+              <td nowrap>{{user.phoneNumber}}</td>
+              <td nowrap>{{user.accountCreationDate}}</td>
+              <td nowrap>{{user.enabled}}</td>
               <td>
                   <span class="table-remove"><button type="button"
                       class="btn btn-danger btn-rounded btn-sm my-0" (click)="openModal(template)">Remove</button></span>
@@ -103,10 +114,36 @@
                         </div>
                       </ng-template>
                 </td>
+                <td>
+                    <span class="table-remove"><button type="button"
+                      class="btn btn-success btn-rounded btn-sm my-0">Edit User</button></span>
+
+                </td>
             </tr>
           </tbody>
+          <tfoot>
+            <td></td>
+            <td><ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+              </ngb-pagination></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding-top: 3%">
+              <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+                  <option [ngValue]="5">5 items per page</option>
+                  <option [ngValue]="10">10 items per page</option>
+                  <option [ngValue]="15">15 items per page</option>
+                  <option [ngValue]="20">20 items per page</option>
+                </select>
+                </td>
+          </tfoot>
         </table>
 
-        
 </body>
 </html>

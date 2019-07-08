@@ -21,10 +21,13 @@ import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import {DialogOverviewExampleDialog} from './login/login.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpInterceptorProviders } from './auth/auth-interceptor';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DataTablesModule } from 'angular-datatables';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    BrowserModule,
     FormsModule,
     HttpClientModule,
     DemoMaterialModule,
@@ -61,8 +63,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MatDatepickerModule,
     MatTableModule,
     ModalModule.forRoot(),
-    CommonModule
-    
+    CommonModule,
+    DataTablesModule,
+    MDBBootstrapModule.forRoot(),
+    NgbModule,
+    NgbAlertModule
   ],
   entryComponents: [DialogOverviewExampleDialog],
   
